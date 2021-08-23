@@ -1,4 +1,3 @@
-
 abstract class SortNumbersEvent {}
 
 class SortNumberInsertEvent extends SortNumbersEvent {
@@ -8,3 +7,5 @@ class SortNumberInsertEvent extends SortNumbersEvent {
     this.data,
   });
 }
+
+class SortNumberResetEvent extends SortNumbersEvent {}

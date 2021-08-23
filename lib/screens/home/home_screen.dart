@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     var bloc = BlocProvider.of<SortNumbersBloc>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Teste flutter'),
         actions: [
           TextButton(
               onPressed: () {
@@ -52,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   _counter = 0;
                   _inputs = [];
                   controller.clear();
+                  bloc.add(SortNumberResetEvent());
                 });
               },
               icon: const Icon(Icons.refresh)),
@@ -112,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 20),
               BlocBuilder<SortNumbersBloc, SortNumbersState>(
-                  bloc: SortNumbersBloc(),
+                  bloc: bloc,
                   builder: (context, state) {
                     if (state is SortNumbersError) {
                       return Text(state.message,
@@ -120,7 +121,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     }
 
                     if (state is SortNumbersLoading) {
-                     
                       return const Expanded(
                           child: Center(
                         child: CircularProgressIndicator(),
